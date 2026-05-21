@@ -2,7 +2,7 @@
 
 Solução desenvolvida para o **Challenge FIAP 2026** em parceria com a **CLYVO VET**.
 
-## Integrantes do Grupo
+## 👥 Integrantes do Grupo
 
 | Nome | RM | Turma |
 |------|----|-------|

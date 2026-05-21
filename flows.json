@@ -1,0 +1,478 @@
+[
+    {
+        "id": "vetflow_tabs",
+        "type": "tab",
+        "label": "VetFlow IoT Dashboard",
+        "disabled": false,
+        "info": "Dashboard principal para o monitoramento em tempo real do VetFlow utilizando ESP32 e HiveMQ Cloud com criptografia TLS."
+    },
+    {
+        "id": "tls_config_id",
+        "type": "tls-config",
+        "name": "TLS_HiveMQ",
+        "cert": "",
+        "key": "",
+        "ca": "",
+        "certname": "",
+        "keyname": "",
+        "caname": "",
+        "servername": "",
+        "verifyservercert": false,
+        "alpnprotocol": ""
+    },
+    {
+        "id": "ui_base_id",
+        "type": "ui_base",
+        "theme": {
+            "name": "ui_theme_id",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "ui_page_main",
+        "type": "ui_tab",
+        "name": "VetFlow",
+        "icon": "fa-heartbeat",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "ui_group_telemetry",
+        "type": "ui_group",
+        "name": "Termômetro",
+        "tab": "ui_page_main",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "ui_group_alerts",
+        "type": "ui_group",
+        "name": "Status do Pet",
+        "tab": "ui_page_main",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "mqtt_broker_config",
+        "type": "mqtt-broker",
+        "name": "HiveMQ Cloud ",
+        "broker": "6264bb59992c4a7ea9f762277e2f87a1.s1.eu.hivemq.cloud",
+        "port": "8883",
+        "tls": "tls_config_id",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": true,
+        "protocolVersion": "4",
+        "keepalive": "3",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "84b635107138d97f",
+        "type": "ui_group",
+        "name": "Balança",
+        "tab": "ui_page_main",
+        "order": 3,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "mqtt_in_node",
+        "type": "mqtt in",
+        "z": "vetflow_tabs",
+        "name": "ESP32",
+        "topic": "vetflow/clinica/baia1/telemetria",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "mqtt_broker_config",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 100,
+        "y": 140,
+        "wires": [
+            [
+                "split_temp_node",
+                "split_weight_node",
+                "alert_logic_node"
+            ]
+        ]
+    },
+    {
+        "id": "split_temp_node",
+        "type": "change",
+        "z": "vetflow_tabs",
+        "name": "Temperatura",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.temperatura",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 510,
+        "y": 100,
+        "wires": [
+            [
+                "gauge_temp",
+                "chart_temp"
+            ]
+        ]
+    },
+    {
+        "id": "split_weight_node",
+        "type": "change",
+        "z": "vetflow_tabs",
+        "name": "Peso",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.peso",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 490,
+        "y": 180,
+        "wires": [
+            [
+                "gauge_weight",
+                "7d6f2a40ecd8a42e"
+            ]
+        ]
+    },
+    {
+        "id": "gauge_temp",
+        "type": "ui_gauge",
+        "z": "vetflow_tabs",
+        "name": "Termômetro",
+        "group": "ui_group_telemetry",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperatura Corporal",
+        "label": "°C",
+        "format": "{{value}}",
+        "min": "25",
+        "max": "50",
+        "colors": [
+            "#3b82f6",
+            "#10b981",
+            "#ef4444"
+        ],
+        "seg1": "35",
+        "seg2": "39",
+        "diff": false,
+        "className": "",
+        "x": 750,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "chart_temp",
+        "type": "ui_chart",
+        "z": "vetflow_tabs",
+        "name": "Histórico Temp",
+        "group": "ui_group_telemetry",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "Evolução Térmica",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "25",
+        "ymax": "50",
+        "removeOlder": "1",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#10b981",
+            "#aec7e8",
+            "#ff7f0e",
+            "#1f77b4",
+            "#ffbb78",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 760,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "gauge_weight",
+        "type": "ui_gauge",
+        "z": "vetflow_tabs",
+        "name": "Balança",
+        "group": "84b635107138d97f",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "gtype": "compass",
+        "title": "Peso Monitorado",
+        "label": "kg",
+        "format": "{{value}}",
+        "min": "0",
+        "max": "50",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca0000"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 740,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "alert_logic_node",
+        "type": "function",
+        "z": "vetflow_tabs",
+        "name": "Alertas",
+        "func": "var temp = msg.payload.temperatura;\nvar peso = msg.payload.peso;\nvar pet = msg.payload.id_pet || 'Desconhecido';\n\nvar porte = \"Desconhecido\";\nif (peso < 10) { porte = \"Pequeno\"; }\nelse if (peso >= 10 && peso < 25) { porte = \"Médio\"; }\nelse { porte = \"Grande\"; }\n\nvar tempStatus = \"Normal\";\nvar color = \"#10b981\"; \n\nif (temp > 39) {\n    tempStatus = \"⚠️Alerta: Hipertermia Detectada\";\n    color = \"#ef4444\"; \n} else if (temp < 35) {\n    tempStatus = \"⚠️Alerta Hipotermia Detectada\";\n    color = \"#3b82f6\"; \n}\n\nvar msgPorte = { payload: porte };\nvar msgTemp = { payload: \"<span style='color:\" + color + \"; font-weight:bold;'>\" + tempStatus + \"</span>\" };\n\nreturn [msgPorte, msgTemp];",
+        "outputs": 2,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 300,
+        "wires": [
+            [
+                "897f96b68d4a0d54"
+            ],
+            [
+                "ui_text_status"
+            ]
+        ]
+    },
+    {
+        "id": "ui_text_status",
+        "type": "ui_text",
+        "z": "vetflow_tabs",
+        "group": "ui_group_alerts",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "Status",
+        "label": "Temperatura do Pet:",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": "",
+        "color": "#000000",
+        "x": 710,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "897f96b68d4a0d54",
+        "type": "ui_text",
+        "z": "vetflow_tabs",
+        "group": "ui_group_alerts",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Porte do Pet:",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 730,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "7d6f2a40ecd8a42e",
+        "type": "ui_chart",
+        "z": "vetflow_tabs",
+        "name": "",
+        "group": "84b635107138d97f",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Histórico do Peso",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "50",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 770,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    }
+]

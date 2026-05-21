@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "author": "VetFlow IoT Team",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht",
+      "top": -124.5,
+      "left": -120.6,
+      "attrs": { "temperature": "37.3" }
+    },
+    { "type": "wokwi-hx711", "id": "hx711", "top": -93.4, "left": 194.6, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:GND.1", "dht:GND", "black", [ "h-80.81" ] ],
+    [ "esp:3V3", "dht:VCC", "red", [ "h-62.21", "h-47.4" ] ],
+    [ "esp:15", "dht:SDA", "blue", [ "v57.6", "h-196.26" ] ],
+    [ "esp:GND.2", "hx711:GND", "black", [ "h52.84", "v-95.7" ] ],
+    [ "esp:3V3", "hx711:VCC", "red", [ "v0" ] ],
+    [ "esp:16", "hx711:DT", "green", [ "h100.84" ] ],
+    [ "esp:4", "hx711:SCK", "yellow", [ "h62.44", "v-191.2" ] ]
+  ],
+  "dependencies": {}
+}

@@ -14,7 +14,7 @@ Solução desenvolvida para o **Challenge FIAP 2026** em parceria com a **CLYVO 
 
 # Monitoramento Clínico Veterinário IoT
 
-Sistema de monitoramento clínico veterinário em tempo real, desenvolvido para otimizar o acompanhamento de pets internados. O sistema utiliza sensores integrados a um microcontrolador ESP32 que enviam dados de temperatura corporal e peso para um Dashboard interativo na nuvem, permitindo a detecção de alterações térmicas e monitoramento da evolução do peso.
+Sistema de monitoramento clínico veterinário em tempo real, desenvolvido para otimizar o acompanhamento de pets internados. O sistema utiliza sensores integrados a um microcontrolador ESP32 que enviam dados de temperatura corporal e peso para um Dashboard interativo, permitindo a detecção de alterações térmicas e monitoramento da evolução do peso.
 
 ## 🚀 Funcionalidades
 - **Telemetria em Tempo Real:** Monitoramento de temperatura (DHT22) e peso (HX711).
